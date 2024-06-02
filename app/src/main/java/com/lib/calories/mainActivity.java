@@ -48,15 +48,6 @@ public class mainActivity extends AppCompatActivity {
             return insets;
         });
 
-        int newUiOptions =  activity.getWindow().getDecorView().getSystemUiVisibility();
-        newUiOptions ^= View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-        newUiOptions ^= View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
-        newUiOptions ^= View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR;
-        newUiOptions ^= View.SYSTEM_UI_FLAG_FULLSCREEN;
-        newUiOptions ^= View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-        activity.getWindow().getDecorView().setSystemUiVisibility(newUiOptions);
-
-
         bottomNavigationView =findViewById(R.id.bottomNavigationView);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.flFragment,homeFragment).commit();

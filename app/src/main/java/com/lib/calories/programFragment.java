@@ -157,10 +157,12 @@ public class programFragment extends Fragment {
         // Create an array to hold the display strings for each food item
         String[] displayStrings = new String[foodNames.length];
         for (int i = 0; i < foodNames.length; i++) {
-            displayStrings[i] = foodNames[i] + " - " + foodCalories[i] + " cal, " +
-                    foodProteins[i] + "g proteins, " + foodCarbohydrates[i] + "g carbohydrates, " + foodFats[i] + "g fats";
+            displayStrings[i] = " ■ " + foodNames[i] + "\n" +
+                    "   Calories: " + foodCalories[i] + " cal\n" +
+                    "   Proteins: " + foodProteins[i] + "g\n" +
+                    "   Carbohydrates: " + foodCarbohydrates[i] + "g\n" +
+                    "   Fats: " + foodFats[i] + "g";
         }
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Select Food for " + mealtime);
         builder.setItems(displayStrings, (dialog, which) -> {
@@ -172,7 +174,6 @@ public class programFragment extends Fragment {
             if (totalCalories + selectedFoodCalories > calorieGoal) {
                 Toast.makeText(getContext(), "Calorie goal exceeded!", Toast.LENGTH_SHORT).show();
                 Toast.makeText(getContext(), calorieGoal, Toast.LENGTH_SHORT).show();
-                return;
             }
             FoodItem foodItem = new FoodItem(selectedFoodName, selectedFoodCalories, selectedFoodProteins, selectedFoodCarbohydrates, selectedFoodFats);
             selectedFoods.get(mealtime).add(foodItem);
